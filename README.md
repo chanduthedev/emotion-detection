@@ -79,3 +79,7 @@ Execute below command to start server
 
 Execute below command to run tests
 `python3 -m pytest`
+
+## Testing rest API's
+
+You can check the apis [here](https://chemotionanalysis.herokuapp.com)
