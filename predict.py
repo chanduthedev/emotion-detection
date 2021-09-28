@@ -1,6 +1,4 @@
-from sklearn import model_selection, metrics, linear_model
-from sklearn.feature_extraction.text import TfidfTransformer, CountVectorizer
-from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfTransformer
 import joblib
 import argparse
 
@@ -18,7 +16,7 @@ args = vars(ap.parse_args())
 modelName = args["model"]
 
 data_path = "data/models/"
-input_str = "how dare you?"
+input_str = "Good"
 
 # Loading  model
 modelFile = ""

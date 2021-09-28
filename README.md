@@ -71,3 +71,11 @@ Run below command to download english language tokenizer
 `python -m spacy download en_core_web_sm`
 
 ## How to start the server
+
+Execute below command to start server
+`python3 server.py`
+
+## How to run tests
+
+Execute below command to run tests
+`python3 -m pytest`
