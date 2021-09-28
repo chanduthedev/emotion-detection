@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Emotion Detection API</title>
+</head>
+<body>
+  <h1>Emotion Detection API</h1>
+  <p>This emotion detection API is REST-ful and supports CORS, so it can also be used in web browsers.</p>
+  <h2>Routes</h2>
+  <h3>GET / (text/html)</h3>
+  <p>Returns an HTML document with API routes and usage.</p>
+  <h3>GET /predict (application/json)</h3>
+  <p>Returns a emotion of the given text.</p>
+  <p>Query parameters:</p>
+  <ul>
+    <li><code>text</code>: Input text to predict the emotion.</li>
+    <li><code>model</code>: (Optional) Model names are LR, SVM, NB and RF, default is <code>LR</code>.</li>
+  </ul>
+  <p>Response:</p>
+  <ul>
+    <li><code>text</code>: Given text.</li>
+    <li><code>emotion</code>: Predicted Emotion.</li>
+    <li><code>model</code>: Used model for prediction.</li>
+  </ul>
+</body>
+</html>
