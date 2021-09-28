@@ -1,0 +1,10 @@
+Input file reading completed in 0.012 seconds.
+Trained transactions:2890  rows.
+Testing transactions:723  rows.
+Training in progress...
+ML Model: NB
+Training completed in 0.016 seconds.
+Prediction in progress...
+Prediction completed in 0.002 seconds.
+Accuracy Score:0.7427385892116183
+Script completed in 0.956 seconds.

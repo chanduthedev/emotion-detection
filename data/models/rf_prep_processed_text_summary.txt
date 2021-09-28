@@ -1,0 +1,10 @@
+Input file reading completed in 0.012 seconds.
+Trained transactions:2890  rows.
+Testing transactions:723  rows.
+Training in progress...
+ML Model: RF
+Training completed in 8.501 seconds.
+Prediction in progress...
+Prediction completed in 0.072 seconds.
+Accuracy Score:0.8326417704011065
+Script completed in 9.626 seconds.
