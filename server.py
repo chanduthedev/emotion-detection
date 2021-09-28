@@ -35,6 +35,12 @@ def home():
 @app.route("/predict", methods=["GET", "POST", "PUT"])
 def predict_api():
     input_text = request.args.get("text")
+    if not input_text:
+        return (
+            jsonify({"message": "text parameter is required"}),
+            400,
+        )
+
     input_model = request.args.get("model", "LR")
     if input_model.lower() == "lr":
         print("LR model")

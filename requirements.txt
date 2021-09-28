@@ -3,3 +3,4 @@ spacy
 scikit-learn
 unidecode
 flask
+pytest
