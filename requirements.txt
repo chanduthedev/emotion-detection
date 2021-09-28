@@ -4,3 +4,4 @@ scikit-learn
 unidecode
 flask
 pytest
+gunicorn
