@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
 from sklearn.feature_extraction.text import TfidfTransformer
 import joblib
 from os import path
@@ -6,7 +7,7 @@ from os import path
 separator = path.sep
 
 app = Flask(__name__, template_folder=".")
-
+CORS(app)
 
 data_path = f"data{separator}models"
 
@@ -26,9 +27,28 @@ nb_count_vect = joblib.load(data_path + separator + "nbVector.pkl")
 rf_model = joblib.load(data_path + separator + "rf.pkl")
 rf_count_vect = joblib.load(data_path + separator + "rfVector.pkl")
 
+models_data = {
+    "trainedData": "https://saifmohammad.com/WebPages/EmotionIntensity-SharedTask.html",
+    "trainedModels": [
+        {"modelName": "Linear Regression", "accuracy": 83.67},
+        {"modelName": "Naive Bayes", "accuracy": 74.27},
+        {"modelName": "Support Vector Machines", "accuracy": 73.16},
+        {"modelName": "Random Forest", "accuracy": 83.2777},
+    ],
+}
+
 
 @app.route("/")
 def home():
+    return render_template("home.html")
+
+
+@app.route("/models")
+def get_trained_models():
+    return (
+        jsonify(models_data),
+        200,
+    )
     return render_template("home.html")
 
 
