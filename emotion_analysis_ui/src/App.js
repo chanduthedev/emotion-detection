@@ -17,6 +17,7 @@ function App() {
   const [emotion, setEmotion] = useState("");
   const [statusCode, setStatusCode] = useState(200);
   const [trainedData, setTrainedData] = useState("");
+  const [inputErrMsg, setInputErrMsg] = useState("");
   const [trainedModels, setTrainedModels] = useState([
     { modelName: "Linear Regression", accuracy: 83.67 },
     { modelName: "Naive Bayes", accuracy: 74.27 },
@@ -35,8 +36,12 @@ function App() {
   ];
 
   async function predict() {
+    if (!inputText) {
+      setInputErrMsg("Input Text can't be empty.");
+      setEmotion("");
+      return;
+    }
     const respData = await predictService(inputText, modelName);
-    console.log(respData);
     setStatusCode(respData.code);
     if (respData.code === 200) {
       setEmotion(respData.emotion);
@@ -45,12 +50,9 @@ function App() {
     }
   }
   async function getModels() {
-    console.log("calling getModels");
     const respData = await getTrainedModelService();
 
     if (respData) {
-      console.log(respData.trainedModels);
-      console.log(respData.trainedData);
       setTrainedModels(respData.trainedModels);
       setTrainedData(respData.trainedData);
     } else {
@@ -92,15 +94,26 @@ function App() {
           value={inputText}
           onChange={(e) => {
             setInputText(e.target.value);
+            setInputErrMsg("");
+            setEmotion("");
           }}
           style={{
             color: "red",
             fontSize: "20px",
-            marginBottom: "10px",
             width: "40%",
           }}
         />
+        <br></br>
+        <label
+          style={{
+            color: "red",
+            fontSize: "20px",
+          }}
+        >
+          {inputErrMsg}
+        </label>
       </div>
+      <div></div>
       <select
         onChange={(e) => {
           setModelName(e.target.value);
@@ -109,6 +122,7 @@ function App() {
           color: "black",
           fontSize: "25px",
           padding: "5px",
+          marginTop: "10px",
           marginBottom: "10px",
           backgroundColor: "transparent",
         }}
@@ -135,7 +149,7 @@ function App() {
       <div
         style={{
           color: "green",
-          fontSize: "30px",
+          fontSize: "50px",
         }}
       >
         <label>{emotion}</label>
